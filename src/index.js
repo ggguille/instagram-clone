@@ -14,3 +14,18 @@ ReactDOM.render(
 // to log results (for example: reportWebVitals(console.log))
 // or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
 reportWebVitals();
+
+// client side rendered app: React (cra)
+  // -> database which is Firebase
+  // -> external dependencies React-Loading-Skeleton
+  // -> styling Tailwind
+
+// architecture
+  // src
+    // -> components, 
+    // -> constants, 
+    // -> context, 
+    // -> helpers, 
+    // -> lib (firebase here), 
+    // -> services (firebase functions)
+    // -> styles (tailwind´s folder (app/tailwind))
