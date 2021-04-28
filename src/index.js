@@ -2,11 +2,15 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+import Firebase from './context/firebase';
+import { firebase, FieldValue } from './lib/firebase';
 
 ReactDOM.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
+  <Firebase.Provider value={{ firebase, FieldValue }}>
+    <React.StrictMode>
+      <App />
+    </React.StrictMode>
+  </Firebase.Provider>,
   document.getElementById('root')
 );
 
