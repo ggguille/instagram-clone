@@ -68,3 +68,22 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/d
 ### `npm run build` fails to minify
 
 This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+
+Notes
+
+client side rendered app: React (cra)
+
+- database which is Firebase
+- external dependencies React-Loading-Skeleton
+- styling Tailwind
+
+architecture
+
+- src/
+  - components/
+  - constants/
+  - context/
+  - helpers/
+  - lib/ (firebase here)
+  - services/ (firebase functions)
+  - styles/ (tailwind´s folder (app/tailwind))
