@@ -19,12 +19,11 @@ ReactDOM.render(
 // to log results (for example: reportWebVitals(console.log))
 // or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
 reportWebVitals(({ id, name, value }) => {
-  ReactGA.event({
-    category: 'Web Vitals',
-    action: name,
-    value: Math.round(name === 'CLS' ? value * 1000 : value), // values must be integers
-    label: id, // id unique to current page load
-    nonInteraction: true, // avoids affecting bounce rate
-    transport: 'beacon'
+  ReactGA.ga('send', 'event', {
+    eventCategory: 'Web Vitals',
+    eventAction: name,
+    eventValue: Math.round(name === 'CLS' ? value * 1000 : value), // values must be integers
+    eventLabel: id, // id unique to current page load
+    nonInteraction: true // avoids affecting bounce rate
   });
 });
