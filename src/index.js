@@ -4,6 +4,7 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import Firebase from './context/firebase';
 import { firebase, FieldValue } from './lib/firebase';
+import ReactGA from './lib/analytics';
 
 ReactDOM.render(
   <Firebase.Provider value={{ firebase, FieldValue }}>
@@ -17,4 +18,13 @@ ReactDOM.render(
 // If you want to start measuring performance in your app, pass a function
 // to log results (for example: reportWebVitals(console.log))
 // or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-reportWebVitals(console.log);
+reportWebVitals(({ id, name, value }) => {
+  ReactGA.event({
+    category: 'Web Vitals',
+    action: name,
+    value: Math.round(name === 'CLS' ? value * 1000 : value), // values must be integers
+    label: id, // id unique to current page load
+    nonInteraction: true, // avoids affecting bounce rate
+    transport: 'beacon'
+  });
+});
