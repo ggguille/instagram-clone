@@ -24,7 +24,9 @@ export default function Login() {
         <img src="/images/iphone-with-profile.jpeg" alt="Iphone with Instagram Clone" />
       </div>
       <div className="flex flex-col w-2/5">
-        <p>I will be the form</p>
+        <h1 className="flex justify-center w-full">
+          <img className="mt-2 w-6/12 mb-4" src="/images/logo.png" alt="Instagram Clone" />
+        </h1>
       </div>
     </div>
   );
