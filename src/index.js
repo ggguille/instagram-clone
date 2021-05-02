@@ -5,6 +5,7 @@ import reportWebVitals from './reportWebVitals';
 import Firebase from './context/firebase';
 import { firebase, FieldValue } from './lib/firebase';
 import ReactGA from './lib/analytics';
+import './styles/app.css';
 
 ReactDOM.render(
   <Firebase.Provider value={{ firebase, FieldValue }}>
