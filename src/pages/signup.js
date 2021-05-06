@@ -9,12 +9,12 @@ export default function Signup() {
   const { firebase } = useContext(FirebaseContext);
 
   const [username, setUsername] = useState('');
-  const [fullname, setFullname] = useState('');
+  const [fullName, setFullName] = useState('');
   const [emailAddress, setEmailAddress] = useState('');
   const [password, setPassword] = useState('');
 
   const [error, setError] = useState('');
-  const isInvalid = fullname === '' || username === '' || password === '' || emailAddress === '';
+  const isInvalid = fullName === '' || username === '' || password === '' || emailAddress === '';
 
   const handleSignup = async (event) => {
     event.preventDefault();
@@ -22,6 +22,35 @@ export default function Signup() {
     if (usernameExists) {
       setError(`Username "${username}" already exists`);
       setUsername('');
+      return;
+    }
+
+    try {
+      const createdUserResult = await firebase
+        .auth()
+        .createUserWithEmailAndPassword(emailAddress, password);
+      // authentication
+      // email && password && username (displayName)
+      await createdUserResult.user.updateProfile({
+        displayName: username
+      });
+      // firebase users collection (create a document)
+      await firebase.firestore().collection('users').add({
+        userId: createdUserResult.user.uid,
+        username: username.toLowerCase(),
+        fullName,
+        emailAddress,
+        followers: [],
+        following: []
+      });
+      setError('');
+      history.push(ROUTES.DASHBOARD);
+    } catch (error) {
+      setUsername('');
+      setFullName('');
+      setEmailAddress('');
+      setPassword('');
+      setError(error.message);
     }
   };
 
@@ -52,12 +81,12 @@ export default function Signup() {
               value={username}
             />
             <input
-              aria-label="Enter your fullname"
+              aria-label="Enter your full name"
               type="text"
-              placeholder="Fullname"
+              placeholder="Full name"
               className="text-sm text-gray-base w-full mr-3 mb-2 py-5 px-4 h-2 border border-gray-primary rounded"
-              onChange={({ target }) => setFullname(target.value)}
-              value={fullname}
+              onChange={({ target }) => setFullName(target.value)}
+              value={fullName}
             />
             <input
               aria-label="Enter your email address"
