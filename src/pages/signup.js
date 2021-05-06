@@ -2,6 +2,7 @@ import { useContext, useEffect, useState } from 'react';
 import { Link, useHistory } from 'react-router-dom';
 import FirebaseContext from '../context/firebase';
 import * as ROUTES from '../constants/routes';
+import { doesUsernameExists } from '../services/firebase';
 
 export default function Signup() {
   const history = useHistory();
@@ -17,10 +18,15 @@ export default function Signup() {
 
   const handleSignup = async (event) => {
     event.preventDefault();
+    const usernameExists = await doesUsernameExists(username);
+    if (usernameExists) {
+      setError(`Username "${username}" already exists`);
+      setUsername('');
+    }
   };
 
   useEffect(() => {
-    document.title = 'Login - Instagram Clone';
+    document.title = 'Signup - Instagram Clone';
   });
 
   return (
