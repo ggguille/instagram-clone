@@ -3,6 +3,7 @@ import { Link, useHistory } from 'react-router-dom';
 import FirebaseContext from '../context/firebase';
 import UserContext from '../context/user';
 import * as ROUTES from '../constants/routes';
+import { DEFAULT_IMAGE_PATH } from '../constants/paths';
 
 export default function Header() {
   const { firebase } = useContext(FirebaseContext);
@@ -74,6 +75,9 @@ export default function Header() {
                       className="rounded-full h-8 w-8 object-cover"
                       src={`/images/avatars/${user.displayName}.jpeg`}
                       alt={user.displayName}
+                      onError={(e) => {
+                        e.target.src = DEFAULT_IMAGE_PATH;
+                      }}
                     />
                   </Link>
                 </div>
