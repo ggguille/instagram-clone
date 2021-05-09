@@ -39,7 +39,6 @@ export default function Header() {
                     />
                   </svg>
                 </Link>
-
                 <button
                   type="button"
                   title="Sign Out"
@@ -69,6 +68,15 @@ export default function Header() {
                     />
                   </svg>
                 </button>
+                <div className="flex items-center cursor-pointer">
+                  <Link to={`/p/${user.displayName}`}>
+                    <img
+                      className="rounded-full h-8 w-8 object-cover"
+                      src={`/images/avatars/${user.displayName}.jpeg`}
+                      alt={user.displayName}
+                    />
+                  </Link>
+                </div>
               </>
             ) : (
               <>
