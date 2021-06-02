@@ -1,5 +1,6 @@
 import Skeleton from 'react-loading-skeleton';
 import usePhotos from '../hooks/use-photos';
+import Post from './post';
 
 export default function Timeline() {
   const { photos } = usePhotos();
@@ -9,7 +10,7 @@ export default function Timeline() {
     return (
       <>
         {[...new Array(4)].map((_, index) => (
-          <Skeleton key={index} count={1} width={320} height={400} />
+          <Skeleton key={index} count={1} width={640} height={500} />
         ))}
       </>
     );
@@ -19,5 +20,5 @@ export default function Timeline() {
     return null;
   }
 
-  return photos.map((content) => <p key={content.docId}>{content.imageSrc}</p>);
+  return photos.map((content) => <Post key={content.docId} content={content} />);
 }
