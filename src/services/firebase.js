@@ -83,3 +83,13 @@ export async function getPhotos(userId, following) {
   );
   return photosWithUserDetails;
 }
+
+export async function updatePhotoLikes(docId, userId, toggleLiked) {
+  await firebase
+    .firestore()
+    .collection('photos')
+    .doc(docId)
+    .update({
+      likes: toggleLiked ? FieldValue.arrayRemove(userId) : FieldValue.arrayUnion(userId)
+    });
+}
