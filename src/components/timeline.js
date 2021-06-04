@@ -4,7 +4,6 @@ import Post from './post';
 
 export default function Timeline() {
   const { photos } = usePhotos();
-  console.log('photos', photos);
 
   if (!photos) {
     return (
