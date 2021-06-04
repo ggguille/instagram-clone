@@ -8,7 +8,7 @@ import Comments from './comments';
 
 export default function Post({ content }) {
   const commentInput = useRef(null);
-  const handleFocus = () => commentInput.current.focus();
+  const handleFocus = () => commentInput.current && commentInput.current.focus();
 
   return (
     <div className="rounded col-span-4 border bg-white border-gray-primary mb-12">
