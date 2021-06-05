@@ -93,3 +93,13 @@ export async function updatePhotoLikes(docId, userId, toggleLiked) {
       likes: toggleLiked ? FieldValue.arrayRemove(userId) : FieldValue.arrayUnion(userId)
     });
 }
+
+export function addPhotoComment(docId, displayName, comment) {
+  return firebase
+    .firestore()
+    .collection('photos')
+    .doc(docId)
+    .update({
+      comments: FieldValue.arrayUnion({ displayName, comment })
+    });
+}
