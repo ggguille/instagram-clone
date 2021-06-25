@@ -41,8 +41,7 @@ describe('Login page', () => {
       cy.get('input[type="password"]').type('anything');
       cy.get('button').click();
     });
-    cy.get('p')
-      .first()
+    cy.get('p.text-red-primary')
       .should('be.visible')
       .should('have.text', 'The email address is badly formatted.');
   });
@@ -53,8 +52,7 @@ describe('Login page', () => {
       cy.get('input[type="password"]').type('anything');
       cy.get('button').click();
     });
-    cy.get('p')
-      .first()
+    cy.get('p.text-red-primary')
       .should('be.visible')
       .should(
         'have.text',
