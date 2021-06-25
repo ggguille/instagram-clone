@@ -16,17 +16,14 @@ describe('Login page', () => {
     cy.get('img[src="/images/logo.png"]').should('have.attr', 'alt', 'Instagram Clone');
 
     cy.get('form').within(() => {
-      cy.root()
-        .get('input[type="text"]')
+      cy.get('input[type="text"]')
         .should('have.attr', 'placeholder', 'Email address')
         .should('have.attr', 'aria-label', 'Enter your email address');
 
-      cy.root()
-        .get('input[type="password"]')
+      cy.get('input[type="password"]')
         .should('have.attr', 'placeholder', 'Password')
         .should('have.attr', 'aria-label', 'Enter your password');
-      cy.root()
-        .get('button')
+      cy.get('button')
         .should('have.attr', 'type', 'submit')
         .should('have.text', 'Log In')
         .should('be.disabled');
@@ -40,9 +37,9 @@ describe('Login page', () => {
 
   it('Login - error (bad email format)', () => {
     cy.get('form').within(() => {
-      cy.root().get('input[type="text"]').type('not an email');
-      cy.root().get('input[type="password"]').type('anything');
-      cy.root().get('button').click();
+      cy.get('input[type="text"]').type('not an email');
+      cy.get('input[type="password"]').type('anything');
+      cy.get('button').click();
     });
     cy.get('p')
       .first()
@@ -52,9 +49,9 @@ describe('Login page', () => {
 
   it('Login - error (bad access)', () => {
     cy.get('form').within(() => {
-      cy.root().get('input[type="text"]').type('notexists@mail.com');
-      cy.root().get('input[type="password"]').type('anything');
-      cy.root().get('button').click();
+      cy.get('input[type="text"]').type('notexists@mail.com');
+      cy.get('input[type="password"]').type('anything');
+      cy.get('button').click();
     });
     cy.get('p')
       .first()
@@ -67,9 +64,9 @@ describe('Login page', () => {
 
   it('Login - success', () => {
     cy.get('form').within(() => {
-      cy.root().get('input[type="text"]').type(loginEmail);
-      cy.root().get('input[type="password"]').type(loginPassword);
-      cy.root().get('button').click();
+      cy.get('input[type="text"]').type(loginEmail);
+      cy.get('input[type="password"]').type(loginPassword);
+      cy.get('button').click();
     });
     cy.url().should('eq', dashboardUrl);
   });
