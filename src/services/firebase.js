@@ -1,5 +1,15 @@
 import { FieldValue, firebase } from '../lib/firebase';
 
+export function signIn(emailAddress, password) {
+  return new Promise((resolve, reject) => {
+    firebase
+      .auth()
+      .signInWithEmailAndPassword(emailAddress, password)
+      .then((userCredentials) => resolve(userCredentials))
+      .catch((error) => reject(error));
+  });
+}
+
 export async function doesUsernameExists(username) {
   const result = await firebase
     .firestore()

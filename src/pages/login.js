@@ -1,11 +1,10 @@
-import { useContext, useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Link, useHistory } from 'react-router-dom';
-import FirebaseContext from '../context/firebase';
 import * as ROUTES from '../constants/routes';
+import { signIn } from '../services/firebase';
 
 export default function Login() {
   const history = useHistory();
-  const { firebase } = useContext(FirebaseContext);
 
   const [emailAddress, setEmailAddress] = useState('');
   const [password, setPassword] = useState('');
@@ -16,7 +15,7 @@ export default function Login() {
   const handleLogin = async (event) => {
     event.preventDefault();
     try {
-      await firebase.auth().signInWithEmailAndPassword(emailAddress, password);
+      await signIn(emailAddress, password);
       history.push(ROUTES.DASHBOARD);
     } catch (error) {
       setEmailAddress('');
