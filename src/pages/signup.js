@@ -79,6 +79,7 @@ export default function Signup() {
               className="text-sm text-gray-base w-full mr-3 mb-2 py-5 px-4 h-2 border border-gray-primary rounded"
               onChange={({ target }) => setUsername(target.value)}
               value={username}
+              name="username"
             />
             <input
               aria-label="Enter your full name"
@@ -87,6 +88,7 @@ export default function Signup() {
               className="text-sm text-gray-base w-full mr-3 mb-2 py-5 px-4 h-2 border border-gray-primary rounded"
               onChange={({ target }) => setFullName(target.value)}
               value={fullName}
+              name="fullname"
             />
             <input
               aria-label="Enter your email address"
@@ -95,6 +97,7 @@ export default function Signup() {
               className="text-sm text-gray-base w-full mr-3 mb-2 py-5 px-4 h-2 border border-gray-primary rounded"
               onChange={({ target }) => setEmailAddress(target.value)}
               value={emailAddress}
+              name="email"
             />
             <input
               aria-label="Enter your password"
@@ -103,6 +106,7 @@ export default function Signup() {
               className="text-sm text-gray-base w-full mr-3 mb-2 py-5 px-4 h-2 border border-gray-primary rounded"
               onChange={({ target }) => setPassword(target.value)}
               value={password}
+              name="password"
             />
             <button
               disabled={isInvalid}
