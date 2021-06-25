@@ -1,0 +1,26 @@
+{
+    "existing_user": {
+        "username": "ggguille",
+        "fullname": "testing sign up",
+        "email": "testing@mail.com",
+        "password": "1234"
+    },
+    "not_email_user": {
+        "username": "testing",
+        "fullname": "testing sign up",
+        "email": "not email",
+        "password": "1234"
+    },
+    "short_pwd_user": {
+        "username": "testing",
+        "fullname": "testing sign up",
+        "email": "testing@mail.com",
+        "password": "1234"
+    },
+    "success_user": {
+        "username": "testing",
+        "fullname": "testing sign up",
+        "email": "testing@mail.com",
+        "password": "123456"
+    }
+}
