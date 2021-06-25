@@ -24,4 +24,6 @@ yarn-error.log*
 
 config
 
+serviceAccount.json
+
 cypress.env.json
